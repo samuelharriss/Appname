@@ -1,12 +1,40 @@
-<form action="/account" method="post" enctype="multipart/form-data">
-    <input type="text" name="displayName" placeholder="Display Name">
-    <input type="email" name="email" placeholder="Email">
-    <input type="file" name="avatar">
-      <button type="submit">Update</button>
-  </form>
-  
-  <form action="/password" method="post">
-	<input type="password" name="password" placeholder="Password">
-	<input type="password" name="passwordConfirm" placeholder="Confirm Password">
-	<button type="submit">Update Password</button>
-</form>
+
+
+<%- include('partials/header'); %> 
+<div id="main">
+  <div class="container-fluid">
+    <div class="row">
+      <div id="sidebar" class="col-md-3">
+        <h2>Sidebar</h2>
+      </div>  
+      <main role="main" class="col-md-9">
+        <h1>Main</h1>
+        
+        <% if (locals.errors && locals.errors.profile) { %>
+          <% locals.errors.profile.forEach(function(error) { %>
+            <p class="alert alert-primary" role="alert"><%= error %></p>
+          <% }) %>
+        <% } %>
+        <form action="/account" method="post" enctype="multipart/form-data">
+          <input type="text" name="displayName" placeholder="Display Name">
+          <input type="email" name="email" placeholder="Email">
+          <input type="file" name="avatar">
+          <button type="submit">Update</button>
+        </form>
+          
+        
+        <% if (locals.errors && locals.errors.password) { %>
+          <% locals.errors.password.forEach(function(error) { %>
+            <p class="alert alert-primary" role="alert"><%= error %></p>
+          <% }) %>
+        <% } %>
+          <form action="/password" method="post">
+          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="passwordConfirm" placeholder="Confirm Password">
+          <button type="submit">Update Password</button>
+        </form>
+      </main>
+    </div> <!-- end .row --> 
+  </div><!-- end .container-fluid -->
+</div><!-- end #main -->
+<%- include('partials/footer'); %>

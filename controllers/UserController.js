@@ -28,6 +28,7 @@ class UserController{
         AraDTApp.post('/password', this.updatePassword);
     }
 
+    
     /**
      * Assigns middleware to add Firebase.auth().currentUser to
      * UserModel, request.session, and response.locals variables
